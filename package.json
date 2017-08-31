@@ -1,0 +1,27 @@
+{
+  "name": "lightning-display",
+  "version": "1.0.0",
+  "style": "src/lightning-display.scss",
+  "main": "src/lightning-display.scss",
+  "description": "Functional Sass framework",
+  "author": "joulse",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joulse/lightning-display.git"
+  },
+  "license": "ISC",
+  "devDependencies": {},
+  "contributors": [
+    "Julien Ducrot <contact@julienducrot.com>"
+  ],
+  "scripts": {
+    "start": "npm run build",
+    "build:css": "node-sass src/lightning-display.scss css/lightning-display.css",
+    "build:minify": "uglifycss css/lightning-display.css > css/lightning-display.min.css",
+    "build": "npm run build:css && npm run build:minify"
+  },
+  "bugs": {
+    "url": "https://github.com/joulse/lightning-display/issues"
+  },
+  "homepage": "https://github.com/joulse/lightning-display#readme"
+}
