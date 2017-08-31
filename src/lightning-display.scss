@@ -1,0 +1,57 @@
+// Display
+
+// Custom breakpoints
+$custom-breakpoints: (
+  'medium': 'screen and (min-width: 480px) and (max-width: 960px)',
+  'large': 'screen and (min-width: 960px)'
+);
+
+// Custom configuration
+$display-prefix: 'd';
+$display-suffix: '';
+$display-property: 'display';
+
+$displays: (
+  'n': 'none',
+  'i': 'inline',
+  'b': 'block',
+  'ib': 'inline-block',
+  'it': 'inline-table',
+  't': 'table',
+  'tc': 'table-cell',
+  't-row': 'table-row',
+  't-row-group': 'table-row-group',
+  't-column': 'table-column',
+  't-column-group': 'table-column-group'
+);
+
+@each $display in $displays {
+  $display-class: nth($display, 1);
+  $display: nth($display, 2);
+
+  .#{$display-prefix}#{$display-class} {
+    #{$display-property}: #{$display};
+  }
+}
+
+@each $breakpoint in $custom-breakpoints {
+  $name: nth($breakpoint, 1);
+  $declaration: nth($breakpoint, 2);
+
+  @if $name == 'medium' {
+    $display-suffix: 'm';
+  } @else if $name == 'large' {
+    $display-suffix: 'l';
+  }
+
+  @media #{$declaration} {
+    @each $display in $displays {
+      $display-class: nth($display, 1);
+      $display: nth($display, 2);
+
+      .#{$display-prefix}#{$display-class}-#{$display-suffix} {
+        #{$display-property}: #{$display};
+      }
+    }
+  }
+}
